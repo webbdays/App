@@ -1,3 +1,5 @@
+import lodashGet from 'lodash/get';
+
 const MAX_IMG_DIMENSIONS = 512;
 
 /**
@@ -62,7 +64,7 @@ function isChildOfComment(tnode) {
  * @returns {Boolean}
  */
 function isChildOfH1(tnode) {
-    return isChildOfNode(tnode, (node) => node.domNode.name.toLowerCase() === 'h1');
+    return isChildOfNode(tnode, (node) => lodashGet(node, 'domNode.name', '').toLowerCase() === 'h1');
 }
 
 export {computeEmbeddedMaxWidth, isChildOfComment, isCommentTag, isChildOfH1};
